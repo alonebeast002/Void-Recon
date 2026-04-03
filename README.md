@@ -1,109 +1,70 @@
-VOID RECON
-Advanced Web Security Toolkit
-==============================
+```markdown
+# VOID RECON
+### Advanced Web Security Toolkit
+**Developer:** [alone-beast](https://github.com/alonebeast002) | **Version:** 2.0
 
-A fast, multi-threaded web security toolkit for authorized penetration testing.
-Covers directory brute-forcing, URL pattern fuzzing, bulk status checking,
-and 403 Forbidden bypass with baseline comparison filtering.
+```text
+  ╔══════════════════════════════════════════════════════════════════════════════╗
+  ║                                                                              ║
+  ║  ██╗   ██╗ ██████╗ ██╗██████╗     ██████╗ ███████╗ ██████╗ ███╗   ██╗        ║
+  ║  ██║   ██║██╔═══██╗██║██╔══██╗    ██╔══██╗██╔════╝██╔════╝ ████╗  ██║        ║
+  ║  ██║   ██║██║   ██║██║██║  ██║    ██████╔╝█████╗  ██║      ██╔██╗ ██║        ║
+  ║  ╚██╗ ██╔╝██║   ██║██║██║  ██║    ██╔══██╗██╔══╝  ██║      ██║╚██╗██║        ║
+  ║   ╚████╔╝ ╚██████╔╝██║██████╔╝    ██║  ██║███████╗╚██████╗ ██║ ╚████║        ║
+  ║    ╚═══╝   ╚═════╝ ╚═╝╚═════╝     ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝        ║
+  ║                                                                              ║
+  ╠──────────────────────────────────────────────────────────────────────────────╣
+  ║          A D V A N C E D   W E B   S E C U R I T Y   T O O L K I T           ║
+  ╠──────────────────────────────────────────────────────────────────────────────╣
+  ║          Authorized Testing Only  |  v2.0  |  github: @alone-beast           ║
+  ╚══════════════════════════════════════════════════════════════════════════════╝
 
-For legal use only. Run only against systems you own or have written permission to test.
+```
+## Overview
+VOID RECON is a high-performance, multi-threaded Python framework designed for automated web security reconnaissance. It eliminates redundant output and focuses on precision through baseline filtering and smart URL parsing.
+## Key Features
+ * **Advanced 403 Bypasser:** Implements path manipulation (Before/After/Mid-path) and header injection.
+ * **Smart Baseline Filtering:** Compares response Content-Length against the original 403 baseline to eliminate false positives.
+ * **Custom Status Filtering:** ffuf-style status code filtering (e.g., -fc 200,301).
+ * **Multi-Threaded Fuzzing:** Optimized for speed with configurable concurrency and timeouts.
+## Installation
+```bash
+git clone [https://github.com/alone-beast/void-recon](https://github.com/alone-beast/void-recon)
+cd void-recon
+chmod +x setup.sh
+sudo ./setup.sh
 
+```
+*After installation, the tool can be executed globally using void-recon.*
+## Usage Guide
+void-recon -m <module> [options]
+### Modules
+| Module | Function |
+|---|---|
+| fuzz | Directory brute-forcing with wordlist support. |
+| pattern | URL fuzzing by replacing the FUZZ keyword. |
+| check | Bulk HTTP status verification for URL lists. |
+| bypass | Automated 403 Forbidden bypass techniques. |
+### Core Options
+ * -u, --url : Target URL (Required for fuzz/bypass)
+ * -w, --wordlist : Path to wordlist or URL list
+ * -fc, --filter : Filter results by status code (e.g., 200,403)
+ * -t, --threads : Concurrent thread count (Default: 30)
+ * -o, --output : Export structured results to a file
+## Technical Logic: 403 Bypass
+Unlike basic tools, VOID RECON performs a **Baseline Check** before testing. If a bypass attempt returns a 200 OK but the page size matches the original 403 Forbidden response (within a 50-byte margin), the result is suppressed to ensure only genuine bypasses are reported.
+### Examples
+**1. Targeted Directory Scan (Filter 200/301):**
+void-recon -m fuzz -u https://target.com -w paths.txt -fc 200,301
+**2. Automated 403 Bypass:**
+void-recon -m bypass -u https://target.com/admin -o bypass_results.txt
+**3. Bulk Status Filtering:**
+void-recon -m check -w domains.txt -fc 200 -o alive.txt
+## Requirements
+ * Python 3.7+
+ * requests, colorama, urllib3
+## Disclaimer
+This tool is intended for **Authorized Testing Only**. The developer is not responsible for any unauthorized use or damages. Always secure written permission before initiating any security assessment.
+```
 
-INSTALLATION
-------------
-
-    git clone https://github.com/alone-beast/void-recon
-    cd void-recon
-    chmod +x setup.sh
-    sudo ./setup.sh
-
-After setup, the tool is available globally as:
-
-    void-recon
-
-
-USAGE
------
-
-    void-recon -m <module> [options]
-
-Modules:
-
-    fuzz        Directory brute-force with a wordlist
-    pattern     Replace FUZZ keyword in URL with wordlist entries
-    check       Bulk HTTP status checker across a URL list
-    bypass      403 Forbidden bypass via path manipulation and header injection
-
-
-OPTIONS
--------
-
-    -u  --url        Target URL
-    -w  --wordlist   Path to wordlist or URL list file
-    -p  --payloads   Custom payload file (bypass module, custom mode)
-    -t  --threads    Thread count                        (default: 30)
-    -T  --timeout    Request timeout in seconds          (default: 10)
-    -x  --ext        File extensions to append           (e.g. .php,.html)
-    -fc --filter     Show only these status codes        (e.g. 200,301)
-    -o  --output     Save results to file
-    -h  --help       Show help and usage
-
-
-EXAMPLES
---------
-
-Directory fuzzing, show only 200 and 301:
-
-    void-recon -m fuzz -u https://example.com -w wordlist.txt -fc 200,301 -o results.txt
-
-FUZZ keyword pattern scan:
-
-    void-recon -m pattern -u https://example.com/api/v1/FUZZ -w params.txt -fc 200
-
-Bulk status check, filter 200 and 403 only:
-
-    void-recon -m check -w urls.txt -fc 200,403 -o alive.txt
-
-403 bypass, auto mode (path manipulation + header injection):
-
-    void-recon -m bypass -u https://example.com/admin -o bypass.txt
-
-403 bypass, custom payload file:
-
-    void-recon -m bypass -u https://example.com/admin -p payloads.txt -o bypass.txt
-
-
-403 BYPASS - HOW IT WORKS
---------------------------
-
-Payloads are applied relative to the full original path, not just the domain.
-
-Given target: https://example.com/status/403
-
-    PATH-AFTER   https://example.com/status/403/%20
-    PATH-BEFORE  https://example.com/%2f/status/403
-    MID-PATH     https://example.com/status/./403
-    HEADER-ONLY  Original URL + X-Forwarded-For, X-Real-IP, etc.
-    COMBINED     Path variant + header injection together
-
-Baseline Comparison:
-    The tool fetches the 403 page first and records its Content-Length.
-    Any bypass response with a size within 50 bytes of the baseline is
-    suppressed as a false positive, regardless of status code.
-
-
-REQUIREMENTS
-------------
-
-    Python 3.7+
-    requests
-    colorama
-    urllib3
-
-
-DISCLAIMER
-----------
-
-This tool is intended for authorized security testing only.
-The author is not responsible for misuse or damage caused by this tool.
-Always obtain written permission before testing any system.
+```
