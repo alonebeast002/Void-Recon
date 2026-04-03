@@ -19,7 +19,7 @@ cd void-recon
 chmod +x setup.sh
 sudo ./setup.sh
 ```
-```
+
 *After installation, the tool can be executed globally using void-recon.*
 ## Usage Guide
 void-recon -m <module> [options]
@@ -40,6 +40,8 @@ void-recon -m <module> [options]
 Unlike basic tools, **VOID RECON** performs a **Baseline Check** before testing. If a bypass attempt returns a 200 OK but the page size matches the original 403 Forbidden response (within a 50-byte margin), the result is suppressed to ensure only genuine bypasses are reported.
 ### Implementation Examples
 **1. Targeted Directory Scan (Filter 200/301):**
+
+
 ```bash
 void-recon -m fuzz -u [https://target.com](https://target.com) -w paths.txt -fc 200,301
 
