@@ -1,4 +1,3 @@
-```markdown
 # VOID RECON
 ### Advanced Web Security Toolkit
 **Developer:** [ALONE BEAST](https://github.com/alonebeast002) | **Version:** 2.1
@@ -11,6 +10,9 @@
  * **Smart Baseline Filtering:** Compares response Content-Length against the original 403 baseline to eliminate false positives.
  * **Custom Status Filtering:** ffuf-style status code filtering (e.g., -fc 200,301).
  * **Multi-Threaded Fuzzing:** Optimized for speed with configurable concurrency and timeouts.
+
+
+
 ## Installation
 
 ```bash
