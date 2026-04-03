@@ -18,7 +18,7 @@
 git clone https://github.com/alonebeast002/Void-Recon.git
 cd Void-Recon
 chmod +x setup.sh
-sudo ./setup.sh
+./setup.sh
 ```
 
 *After installation, the tool can be executed globally using void-recon.*
