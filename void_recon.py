@@ -72,12 +72,6 @@ def usage():
     {Y}-o{RS}  --output     Output file path
     {Y}-p{RS}  --payloads   Payload file for bypass custom mode
 
-  {B}EXAMPLES:{RS}
-    void-recon {Y}-m{RS} fuzz    {Y}-u{RS} https://example.com {Y}-w{RS} wordlist.txt {Y}-fc{RS} 200,301
-    void-recon {Y}-m{RS} bypass  {Y}-u{RS} https://example.com/admin
-    void-recon {Y}-m{RS} bypass  {Y}-u{RS} https://example.com/admin {Y}-p{RS} payloads.txt
-    void-recon {Y}-m{RS} pattern {Y}-u{RS} https://example.com/api/FUZZ {Y}-w{RS} words.txt
-    void-recon {Y}-m{RS} check   {Y}-w{RS} urls.txt {Y}-fc{RS} 200,403 {Y}-o{RS} results.txt
 """)
 
 def divider():
