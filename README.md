@@ -5,15 +5,12 @@
 
 ```text
    
-
-  ██╗   ██╗ ██████╗ ██╗██████╗     ██████╗ ███████╗ ██████╗ ██████╗ ███╗   ██╗
-  ██║   ██║██╔═══██╗██║██╔══██╗    ██╔══██╗██╔════╝██╔════╝██╔═══██╗████╗  ██║
-  ██║   ██║██║   ██║██║██║  ██║    ██████╔╝█████╗  ██║     ██║   ██║██╔██╗ ██║
-  ╚██╗ ██╔╝██║   ██║██║██║  ██║    ██╔══██╗██╔══╝  ██║     ██║   ██║██║╚██╗██║
-   ╚████╔╝ ╚██████╔╝██║██████╔╝    ██║  ██║███████╗╚██████╗╚██████╔╝██║ ╚████║
-    ╚═══╝   ╚═════╝ ╚═╝╚═════╝     ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝
-  Advanced Web Security Toolkit  |  v2.1  |  Authorized Testing Only
-
+  _   _  _  ___   ___   ___  ___  ___  ___  _  _ 
+ | | | |/ \|_ _| |   \ | __|/  __|/ _ \|  \| |
+ | \_/ | O || |  | o  || _| | (__| O || | ' |
+  \___/ \_/ |_|  |_|\_\|___| \___|\___/|_|\__|
+  
+  Advanced Web Security Toolkit | v2.1 | @alonebeast002
 ```
 ## Overview
 VOID RECON is a high-performance, multi-threaded Python framework designed for automated web security reconnaissance. It eliminates redundant output and focuses on precision through baseline filtering and smart URL parsing.
@@ -24,7 +21,7 @@ VOID RECON is a high-performance, multi-threaded Python framework designed for a
  * **Multi-Threaded Fuzzing:** Optimized for speed with configurable concurrency and timeouts.
 ## Installation
 ```bash
-git clone [https://github.com/alone-beast/void-recon](https://github.com/alone-beast/void-recon)
+git clone https://github.com/alonebeast002/void-recon
 cd void-recon
 chmod +x setup.sh
 sudo ./setup.sh
