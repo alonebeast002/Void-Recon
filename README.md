@@ -12,12 +12,13 @@
  * **Custom Status Filtering:** ffuf-style status code filtering (e.g., -fc 200,301).
  * **Multi-Threaded Fuzzing:** Optimized for speed with configurable concurrency and timeouts.
 ## Installation
+
 ```bash
 git clone [https://github.com/alonebeast002/void-recon](https://github.com/alonebeast002/void-recon)
 cd void-recon
 chmod +x setup.sh
 sudo ./setup.sh
-
+```
 ```
 *After installation, the tool can be executed globally using void-recon.*
 ## Usage Guide
