@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="banner.gif" alt="JS Reaper" width="900"/>
+  <img src="banner.jpg" alt="JS Reaper" width="900"/>
 </p>
 
 <p align="center">
